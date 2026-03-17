@@ -25,13 +25,13 @@ interface FlowDiagramProps {
 function getStepStyles(type: FlowStep["type"]) {
   switch (type) {
     case "server":
-      return "border-green-500/30 bg-green-500/5 text-green-400";
+      return "border-green-500/20 bg-green-500/5";
     case "client":
-      return "border-blue-500/30 bg-blue-500/5 text-blue-400";
+      return "border-blue-500/20 bg-blue-500/5";
     case "network":
-      return "border-orange-500/30 bg-orange-500/5 text-orange-400";
+      return "border-orange-500/20 bg-orange-500/5";
     default:
-      return "border-[var(--color-border)] bg-[var(--color-bg-card)] text-[var(--color-text-primary)]";
+      return "border-[var(--color-border)] bg-[var(--color-bg-card)]";
   }
 }
 
@@ -44,39 +44,79 @@ function getTagLabel(type: FlowStep["type"]) {
   }
 }
 
+function getTagColor(type: FlowStep["type"]) {
+  switch (type) {
+    case "server": return "bg-green-500/15 text-green-400";
+    case "client": return "bg-blue-500/15 text-blue-400";
+    case "network": return "bg-orange-500/15 text-orange-400";
+    default: return "";
+  }
+}
+
+function getLabelColor(type: FlowStep["type"]) {
+  switch (type) {
+    case "server": return "text-green-300";
+    case "client": return "text-blue-300";
+    case "network": return "text-orange-300";
+    default: return "text-[var(--color-text-primary)]";
+  }
+}
+
 export default function FlowDiagram({ title, steps, direction = "vertical" }: FlowDiagramProps) {
   // ALL of this rendering happens on the server.
   // The browser receives pure HTML - no React runtime needed for this component.
   return (
-    <div className="my-6 p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
-      <h4 className="text-sm font-semibold text-[var(--color-text-primary)] mb-4">{title}</h4>
+    <div className="my-6 p-5 md:p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+      <h4 className="text-sm font-semibold text-[var(--color-text-primary)] mb-5">{title}</h4>
 
-      <div className={`flex ${direction === "vertical" ? "flex-col" : "flex-row flex-wrap"} items-center gap-1`}>
+      <div
+        className={`
+          flex ${direction === "vertical" ? "flex-col" : "flex-row flex-wrap"} items-center gap-1
+          ${direction === "horizontal" ? "overflow-x-auto pb-2 -mb-2" : ""}
+        `}
+      >
         {steps.map((step, i) => (
-          <div key={i} className={`flex ${direction === "vertical" ? "flex-col" : "flex-row"} items-center`}>
+          <div
+            key={i}
+            className={`flex ${direction === "vertical" ? "flex-col w-full" : "flex-row"} items-center`}
+          >
             {/* Step box */}
-            <div className={`px-4 py-3 rounded-lg border ${getStepStyles(step.type)} text-center min-w-[200px]`}>
+            <div
+              className={`
+                px-4 py-3.5 rounded-lg border ${getStepStyles(step.type)}
+                ${direction === "vertical" ? "w-full max-w-lg mx-auto" : "min-w-[200px]"}
+                text-center
+              `}
+            >
               <div className="flex items-center justify-center gap-2">
                 {getTagLabel(step.type) && (
-                  <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
-                    step.type === "server" ? "bg-green-500/20" :
-                    step.type === "client" ? "bg-blue-500/20" :
-                    "bg-orange-500/20"
-                  }`}>
+                  <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${getTagColor(step.type)} tracking-wider`}>
                     {getTagLabel(step.type)}
                   </span>
                 )}
               </div>
-              <p className="text-sm font-medium mt-1">{step.label}</p>
+              <p className={`text-sm font-medium mt-1.5 ${getLabelColor(step.type)}`}>{step.label}</p>
               {step.description && (
-                <p className="text-xs text-[var(--color-text-muted)] mt-1">{step.description}</p>
+                <p className="text-xs text-[var(--color-text-muted)] mt-1 leading-relaxed">{step.description}</p>
               )}
             </div>
 
             {/* Arrow between steps */}
             {i < steps.length - 1 && (
-              <div className={`text-[var(--color-text-muted)] ${direction === "vertical" ? "py-1" : "px-2"}`}>
-                {direction === "vertical" ? "↓" : "→"}
+              <div className={`text-[var(--color-text-muted)] ${direction === "vertical" ? "py-1.5" : "px-3"} flex-shrink-0`}>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={direction === "horizontal" ? "-rotate-90" : ""}
+                >
+                  <path d="M8 3v10M4 9l4 4 4-4" />
+                </svg>
               </div>
             )}
           </div>

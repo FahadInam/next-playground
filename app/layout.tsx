@@ -57,14 +57,14 @@ export default function RootLayout({
           - Main content area: Server Component (children = page content)
 
           The flex layout ensures sidebar + content are side by side.
-          Sidebar has sticky positioning and scrolls independently.
+          On mobile (< 768px), sidebar becomes an overlay drawer.
         */}
         <div className="flex min-h-screen">
           {/* Client Component boundary - Sidebar will be hydrated in the browser */}
           <Sidebar />
 
           {/* Main content area - each page renders here */}
-          <main className="flex-1 p-8 overflow-y-auto">
+          <main className="flex-1 min-w-0 px-4 py-6 md:px-8 md:py-8 lg:px-12 lg:py-10 overflow-y-auto">
             {children}
           </main>
         </div>

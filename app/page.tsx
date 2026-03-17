@@ -9,10 +9,17 @@
 // - Benefits: Zero JavaScript sent to browser for this page
 // - The HTML is pre-rendered on the server
 //
-// RENDERING: This page will be STATICALLY GENERATED at build time
-// because it has no dynamic data dependencies.
+// ANIMATIONS:
+// - PageTransition wraps the entire page for fade-in on mount
+// - ScrollReveal wraps each category section for scroll-triggered reveals
+// - StaggerChildren + StaggerItem wrap the card grid for staggered entrances
+// - These are Client Components imported into this Server Component;
+//   Next.js handles the boundary automatically
 
 import Link from "next/link";
+import PageTransition from "./components/PageTransition";
+import ScrollReveal from "./components/ScrollReveal";
+import StaggerChildren, { StaggerItem } from "./components/StaggerChildren";
 
 // All concept pages with their metadata
 // This data structure exists only on the server - never sent to the client
@@ -152,52 +159,66 @@ export default function HomePage() {
   // This entire function runs on the server.
   // The returned JSX is converted to HTML on the server and sent to the browser.
   return (
-    <div className="max-w-5xl mx-auto">
-      {/* Hero Section */}
-      <div className="mb-12 text-center">
-        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-          Next.js Learning Playground
-        </h1>
-        <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto mb-6">
-          An interactive guide for experienced React developers to master every
-          Next.js App Router concept. Each page includes working demos,
-          code examples, and detailed explanations.
-        </p>
-        <Link
-          href="/react-vs-nextjs"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-500 hover:to-purple-500 transition-all"
-        >
-          Start Here: React vs Next.js Architecture
-          <span>→</span>
-        </Link>
-      </div>
-
-      {/* Concept Grid */}
-      {conceptPages.map((category) => (
-        <div key={category.category} className="mb-10">
-          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-1">
-            {category.category}
-          </h2>
-          <p className="text-sm text-[var(--color-text-muted)] mb-4">
-            {category.description}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {category.items.map((item) => (
-              <Link key={item.path} href={item.path}>
-                <div className={`concept-card rounded-xl p-5 bg-gradient-to-br ${item.color} bg-[var(--color-bg-card)] h-full`}>
-                  <div className="text-2xl mb-3">{item.icon}</div>
-                  <h3 className="text-base font-semibold text-[var(--color-text-primary)] mb-1">
-                    {item.name}
-                  </h3>
-                  <p className="text-sm text-[var(--color-text-secondary)]">
-                    {item.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
+    <PageTransition>
+      <div className="max-w-5xl mx-auto">
+        {/* Hero Section */}
+        <div className="mb-14 md:mb-16 text-center pt-4 md:pt-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-accent-blue)]/10 text-[var(--color-accent-blue)] text-xs font-medium mb-5 border border-[var(--color-accent-blue)]/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent-green)] animate-pulse" />
+            Interactive Learning Platform
           </div>
+          <h1 className="text-3xl md:text-5xl font-bold mb-5 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent leading-tight tracking-tight">
+            Next.js Learning Playground
+          </h1>
+          <p className="text-base md:text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto mb-8 leading-relaxed">
+            An interactive guide for experienced React developers to master every
+            Next.js App Router concept. Each page includes working demos,
+            code examples, and detailed explanations.
+          </p>
+          <Link
+            href="/react-vs-nextjs"
+            className="cta-button inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-500 hover:to-purple-500 transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 hover:-translate-y-0.5 active:translate-y-0"
+          >
+            Start Here: React vs Next.js Architecture
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="cta-arrow">
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </Link>
         </div>
-      ))}
-    </div>
+
+        {/* Concept Grid */}
+        {conceptPages.map((category, categoryIndex) => (
+          <ScrollReveal key={category.category} delay={categoryIndex * 0.05} className="mb-12">
+            <div className="mb-5">
+              <h2 className="text-lg md:text-xl font-bold text-[var(--color-text-primary)] tracking-tight">
+                {category.category}
+              </h2>
+              <p className="text-sm text-[var(--color-text-muted)] mt-1">
+                {category.description}
+              </p>
+            </div>
+            <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {category.items.map((item) => (
+                <StaggerItem key={item.path}>
+                  <Link href={item.path}>
+                    <div className={`concept-card p-5 bg-gradient-to-br ${item.color} bg-[var(--color-bg-card)] h-full group`}>
+                      <div className="text-2xl mb-3 transition-transform duration-200 group-hover:scale-110 inline-block">
+                        {item.icon}
+                      </div>
+                      <h3 className="text-[15px] font-semibold text-[var(--color-text-primary)] mb-1.5">
+                        {item.name}
+                      </h3>
+                      <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </Link>
+                </StaggerItem>
+              ))}
+            </StaggerChildren>
+          </ScrollReveal>
+        ))}
+      </div>
+    </PageTransition>
   );
 }
