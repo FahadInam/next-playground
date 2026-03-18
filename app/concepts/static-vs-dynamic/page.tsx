@@ -25,6 +25,16 @@ export default function StaticVsDynamicPage() {
       description="Next.js automatically determines whether to statically generate or dynamically render pages based on your data fetching patterns. Understanding this is crucial for performance."
       serverOrClient="server"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            🖼️ Think of two types of signs. A printed poster (static) is made once and shown to everyone — fast and cheap. A digital billboard (dynamic) updates in real-time with live info like weather or news — slower to generate but always current. Next.js lets you choose: pre-build pages that rarely change (static) or generate them fresh for each visitor (dynamic).
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Overview */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

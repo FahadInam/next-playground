@@ -21,6 +21,16 @@ export default function ApiRoutesPage() {
       description="Route Handlers let you create API endpoints using Web Request and Response APIs. They are defined in route.ts files and run exclusively on the server."
       serverOrClient="both"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            🍔 Think of a drive-through window at a fast-food restaurant. You pull up, speak into the intercom (send a request), and the kitchen prepares your order and hands it through the window (sends a response). API Routes in Next.js are like those drive-through windows — they&apos;re endpoints where your app can send and receive data.
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Explanation */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

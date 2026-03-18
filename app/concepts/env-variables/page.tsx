@@ -30,6 +30,16 @@ export default function EnvVariablesPage() {
       description="Next.js handles environment variables with built-in security. Variables without the NEXT_PUBLIC_ prefix are server-only and never exposed to the browser."
       serverOrClient="both"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            🍽️ Think of a restaurant recipe book. Some recipes are secret — only the kitchen staff (server) can see them. Other recipes, like the menu descriptions, are public for customers (browser) to read. Environment variables in Next.js work the same way: some hold secret data (API keys, passwords) that stay on the server, while others are safe to share publicly.
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: The Two Types */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

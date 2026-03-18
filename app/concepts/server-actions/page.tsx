@@ -28,6 +28,16 @@ export default function ServerActionsPage() {
       description='Server Actions are async functions that execute on the server. Defined with "use server", they enable form handling and data mutations without creating separate API endpoints.'
       serverOrClient="both"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            🏦 Imagine filling out a form at a bank. You write your details on paper and hand it to the teller behind the counter. The teller processes it in the back office (server) and returns the result. Server Actions work the same way — your form data goes directly to the server for processing, without needing a middleman (API route).
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Explanation */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

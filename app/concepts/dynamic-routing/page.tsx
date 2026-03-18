@@ -30,6 +30,16 @@ export default function DynamicRoutingPage() {
       description="Next.js uses file-system based routing with support for dynamic segments, catch-all routes, and route groups. No external routing library needed."
       serverOrClient="server"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            🏨 Imagine a hotel with numbered rooms. Instead of building a separate hallway for each room, the hotel has ONE hallway pattern that works for room 101, room 102, room 103, and so on. Dynamic Routing in Next.js is the same idea — you create ONE page template that handles thousands of different URLs, like /products/shoes, /products/hats, /products/jackets.
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Route Patterns */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

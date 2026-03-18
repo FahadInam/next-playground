@@ -25,6 +25,16 @@ export default function EdgeRuntimePage() {
       description="The Edge Runtime is a lightweight alternative to Node.js that runs on CDN edge locations, providing ultra-low latency responses globally. It supports Web standard APIs."
       serverOrClient="server"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            🍕 Imagine a pizza chain with one central kitchen vs. many small kitchens spread across the city. The central kitchen (Node.js server) can make any pizza but customers far away wait longer for delivery. The small kitchens (Edge Runtime) are closer to customers and serve faster, but can only make simpler pizzas. Edge Runtime runs your code in data centers around the world, closer to your users.
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Explanation */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

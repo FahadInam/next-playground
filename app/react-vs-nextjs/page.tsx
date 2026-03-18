@@ -23,6 +23,16 @@ export default function ReactVsNextjsPage() {
       description="Understanding the fundamental shift from client-side React SPAs to Next.js's server-first architecture. This is the most important concept to grasp."
       serverOrClient="both"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-sm text-[var(--color-text-secondary)]">
+            Imagine building a house. With traditional React (SPA), you ship all the building materials to the homeowner and let them assemble the house themselves in the browser. With Next.js, a construction crew (the server) builds most of the house before delivering it — the homeowner just moves in. The house looks the same, but the Next.js approach means people can move in much faster.
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: The Big Picture */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

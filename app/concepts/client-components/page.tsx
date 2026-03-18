@@ -21,6 +21,16 @@ export default function ClientComponentsPage() {
       description='Client Components are opted-in with "use client" directive. They enable interactivity, hooks, and browser APIs. They are hydrated in the browser after server-rendering.'
       serverOrClient="client"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            🍴 Think of a self-service buffet. Unlike a restaurant where the chef does everything, at a buffet YOU interact with the food — you pick items, use tongs, serve yourself. Client Components are like that buffet: they run in YOUR browser so you can click buttons, type in forms, and interact directly.
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Explanation */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

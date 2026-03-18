@@ -24,6 +24,16 @@ export default async function MiddlewarePage() {
       description="Middleware runs before every matched request, enabling authentication guards, redirects, URL rewrites, header modifications, and more. It executes on the Edge Runtime."
       serverOrClient="server"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            🛡️ Think of a security guard at the entrance of a building. Before anyone enters, the guard checks their ID, redirects visitors to the right floor, or turns away unauthorized people. Middleware in Next.js works the same way — it intercepts every request before it reaches your pages and can redirect, block, or modify it.
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Explanation */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

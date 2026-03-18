@@ -84,6 +84,16 @@ export default function StreamingPage() {
       description="Streaming lets the server send HTML progressively as components finish rendering. Combined with React Suspense, it enables instant loading states and progressive content delivery."
       serverOrClient="server"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            📺 Imagine watching a TV show on a streaming service. You don&apos;t wait for the entire episode to download before watching — it starts playing immediately while the rest loads in the background. Next.js Streaming works the same way: it sends parts of your page as they&apos;re ready, so users see content instantly instead of staring at a blank screen.
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Explanation */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

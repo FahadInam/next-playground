@@ -23,6 +23,16 @@ export default function PerformancePage() {
       description="Next.js provides built-in performance optimizations including automatic image optimization, code splitting, dynamic imports, and font optimization."
       serverOrClient="both"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            🧳 Think of packing for a trip. A bad packer throws everything into one huge suitcase (slow to carry). A smart packer uses small bags, only brings what&apos;s needed for each day, and compresses clothes to save space. Performance optimization in Next.js is like smart packing — loading only what&apos;s needed, compressing images, and splitting code into smaller pieces so your website loads faster.
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Image Optimization */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

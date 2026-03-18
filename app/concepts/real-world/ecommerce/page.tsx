@@ -37,6 +37,16 @@ export default function EcommerceArchitecturePage() {
       description="A complete architectural analysis of how to build a production e-commerce website using Next.js App Router — covering rendering strategies, data fetching, authentication, caching, SEO, and performance."
       serverOrClient="both"
     >
+      {/* Layman Explanation - Introductory Analogy */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-sm text-[var(--color-text-secondary)]">
+            Think of this page as a blueprint review meeting for a department store. Before construction begins, the architect explains every decision — where to put the entrance, how to organize departments, where security goes, and how to handle the checkout lines. This page walks you through every architectural decision for building an e-commerce website with Next.js.
+          </p>
+        </div>
+      </section>
+
       {/* ============================================================
           SECTION 0: TABLE OF CONTENTS
           Provides in-page navigation for this long architecture document.

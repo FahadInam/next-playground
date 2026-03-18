@@ -25,6 +25,16 @@ export default function CachingPage() {
       description="Next.js has multiple caching layers that optimize performance. Understanding when data is cached, revalidated, or fetched fresh is crucial for building performant applications."
       serverOrClient="both"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            📚 Think of a library. If you borrow a popular book, the librarian might keep extra copies at the front desk (cache) so they don&apos;t have to walk to the back shelves every time someone asks. Caching in Next.js works the same way — it stores frequently requested data close by so your pages load faster.
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Overview */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

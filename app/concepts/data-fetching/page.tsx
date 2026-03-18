@@ -69,6 +69,16 @@ export default async function DataFetchingPage() {
       description="Next.js provides two primary approaches to data fetching: server-side (in async Server Components) and client-side (using useEffect in Client Components). Understanding when to use each approach is key to building performant Next.js applications."
       serverOrClient="both"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            🍕 Imagine ordering food. In one scenario, the waiter brings your food already prepared (server fetching — data arrives with the page). In another, you sit down first and THEN call for delivery on your phone (client fetching — page loads first, data arrives later). Next.js lets you choose which approach works best for each situation.
+          </p>
+        </div>
+      </section>
+
       {/* ================================================================= */}
       {/* SECTION 1: Explanation                                            */}
       {/* ================================================================= */}

@@ -21,6 +21,16 @@ export default function LayoutsPage() {
       description="Next.js uses a file-based layout system where layout.tsx files create persistent UI shells that wrap pages. Layouts don't re-render when navigating between pages that share them."
       serverOrClient="server"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            🖼️ Think of a picture frame. The frame (layout) stays the same while you swap different photos (pages) inside it. In Next.js, layouts are the parts of your website that stay consistent — like the navigation bar and footer — while the main content changes as you navigate between pages.
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Explanation */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

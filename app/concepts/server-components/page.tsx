@@ -41,6 +41,16 @@ export default async function ServerComponentsPage() {
       description="Server Components are the default in Next.js App Router. They render on the server and send zero JavaScript to the browser, resulting in faster page loads and smaller bundles."
       serverOrClient="server"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            🍽️ Think of a restaurant where the chef prepares your meal in the kitchen (server). You only receive the finished dish (HTML) — you never see the kitchen or the recipe. Server Components work the same way: they run in the kitchen (server), and only the finished result is sent to your table (browser).
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Explanation */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">

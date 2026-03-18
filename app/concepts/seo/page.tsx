@@ -35,6 +35,16 @@ export default function SeoPage() {
       description="Next.js provides a powerful Metadata API that generates <head> tags on the server. This includes title, description, Open Graph, Twitter cards, and more - all with full TypeScript support."
       serverOrClient="server"
     >
+      {/* Layman Explanation */}
+      <section className="space-y-4">
+        <div className="bg-[var(--color-bg-card)] rounded-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Layman Explanation</h2>
+          <p className="text-[var(--color-text-secondary)]">
+            📚 Imagine writing a book. The content is important, but so is what&apos;s on the cover — the title, the description on the back, and the category label. These help people find your book in a library. SEO metadata in Next.js is like designing your book&apos;s cover: it tells search engines (the librarians) what your page is about so they can show it to the right people.
+          </p>
+        </div>
+      </section>
+
       {/* Section 1: Metadata Types */}
       <section>
         <h2 className="text-xl font-semibold mb-3 text-[var(--color-text-primary)]">
