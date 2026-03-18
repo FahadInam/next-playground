@@ -21,10 +21,10 @@ export default function ConceptPage({ title, description, serverOrClient, childr
   return (
     <PageTransition>
       <div className="max-w-[var(--content-max-width)] mx-auto">
-        {/* Page header */}
-        <header className="mb-10 md:mb-12">
-          <div className="flex flex-wrap items-center gap-3 mb-3">
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-[var(--color-text-primary)]">
+        {/* Page header with refined typography */}
+        <header className="mb-10 md:mb-14">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
+            <h1 className="text-2xl md:text-[2rem] font-[family-name:var(--font-display)] font-bold tracking-tight text-[var(--color-text-primary)] leading-tight">
               {title}
             </h1>
             <span className={serverOrClient === "server" ? "tag-server" : serverOrClient === "client" ? "tag-client" : ""}>
@@ -41,10 +41,12 @@ export default function ConceptPage({ title, description, serverOrClient, childr
           <p className="text-[var(--color-text-secondary)] text-base md:text-lg leading-relaxed max-w-3xl">
             {description}
           </p>
+          {/* Subtle separator line */}
+          <div className="mt-6 h-px bg-gradient-to-r from-[var(--color-border)] via-[var(--color-border-hover)] to-transparent" />
         </header>
 
         {/* Page content - can contain mix of Server and Client Components */}
-        <div className="space-y-10 md:space-y-12">{children}</div>
+        <div className="space-y-10 md:space-y-14">{children}</div>
       </div>
     </PageTransition>
   );

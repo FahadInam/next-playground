@@ -25,11 +25,11 @@ interface FlowDiagramProps {
 function getStepStyles(type: FlowStep["type"]) {
   switch (type) {
     case "server":
-      return "border-green-500/20 bg-green-500/5";
+      return "border-[var(--color-accent-green)]/15 bg-[var(--color-accent-green)]/5";
     case "client":
-      return "border-blue-500/20 bg-blue-500/5";
+      return "border-[var(--color-accent-blue)]/15 bg-[var(--color-accent-blue)]/5";
     case "network":
-      return "border-orange-500/20 bg-orange-500/5";
+      return "border-[var(--color-accent-orange)]/15 bg-[var(--color-accent-orange)]/5";
     default:
       return "border-[var(--color-border)] bg-[var(--color-bg-card)]";
   }
@@ -46,18 +46,18 @@ function getTagLabel(type: FlowStep["type"]) {
 
 function getTagColor(type: FlowStep["type"]) {
   switch (type) {
-    case "server": return "bg-green-500/15 text-green-400";
-    case "client": return "bg-blue-500/15 text-blue-400";
-    case "network": return "bg-orange-500/15 text-orange-400";
+    case "server": return "bg-[var(--color-accent-green)]/10 text-[var(--color-accent-green)] border border-[var(--color-accent-green)]/15";
+    case "client": return "bg-[var(--color-accent-blue)]/10 text-[var(--color-accent-blue)] border border-[var(--color-accent-blue)]/15";
+    case "network": return "bg-[var(--color-accent-orange)]/10 text-[var(--color-accent-orange)] border border-[var(--color-accent-orange)]/15";
     default: return "";
   }
 }
 
 function getLabelColor(type: FlowStep["type"]) {
   switch (type) {
-    case "server": return "text-green-300";
-    case "client": return "text-blue-300";
-    case "network": return "text-orange-300";
+    case "server": return "text-[var(--color-accent-green)]";
+    case "client": return "text-[var(--color-accent-blue)]";
+    case "network": return "text-[var(--color-accent-orange)]";
     default: return "text-[var(--color-text-primary)]";
   }
 }
@@ -66,8 +66,8 @@ export default function FlowDiagram({ title, steps, direction = "vertical" }: Fl
   // ALL of this rendering happens on the server.
   // The browser receives pure HTML - no React runtime needed for this component.
   return (
-    <div className="my-6 p-5 md:p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
-      <h4 className="text-sm font-semibold text-[var(--color-text-primary)] mb-5">{title}</h4>
+    <div className="my-6 p-5 md:p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] backdrop-blur-sm">
+      <h4 className="text-sm font-[family-name:var(--font-display)] font-semibold text-[var(--color-text-primary)] mb-5">{title}</h4>
 
       <div
         className={`
@@ -83,7 +83,7 @@ export default function FlowDiagram({ title, steps, direction = "vertical" }: Fl
             {/* Step box */}
             <div
               className={`
-                px-4 py-3.5 rounded-lg border ${getStepStyles(step.type)}
+                flow-step px-4 py-3.5 rounded-lg border ${getStepStyles(step.type)}
                 ${direction === "vertical" ? "w-full max-w-lg mx-auto" : "min-w-[200px]"}
                 text-center
               `}
@@ -103,7 +103,7 @@ export default function FlowDiagram({ title, steps, direction = "vertical" }: Fl
 
             {/* Arrow between steps */}
             {i < steps.length - 1 && (
-              <div className={`text-[var(--color-text-muted)] ${direction === "vertical" ? "py-1.5" : "px-3"} flex-shrink-0`}>
+              <div className={`text-[var(--color-text-muted)]/50 ${direction === "vertical" ? "py-1.5" : "px-3"} flex-shrink-0`}>
                 <svg
                   width="16"
                   height="16"

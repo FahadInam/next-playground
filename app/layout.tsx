@@ -25,8 +25,32 @@
 // 6. React hydrates Client Components (Sidebar becomes interactive)
 
 import type { Metadata } from "next";
+import { Outfit, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Sidebar from "./components/Sidebar";
+
+// FONT LOADING (Server-side optimization)
+// next/font/google automatically:
+// 1. Downloads fonts at build time (no external requests at runtime)
+// 2. Self-hosts the font files alongside your static assets
+// 3. Adds font-display: swap for optimal loading
+// 4. Eliminates layout shift from font loading
+//
+// Outfit — geometric, modern display font for headings
+// DM Sans — clean, highly readable for body text
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 // METADATA API (Server-only feature)
 // This generates <head> tags on the server.
@@ -49,8 +73,8 @@ export default function RootLayout({
   // console.log here would appear in your terminal, NOT in the browser.
 
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" className={`${outfit.variable} ${dmSans.variable}`}>
+      <body className="antialiased font-[family-name:var(--font-body)]">
         {/*
           LAYOUT STRUCTURE:
           - Sidebar: Client Component (interactive, uses hooks)

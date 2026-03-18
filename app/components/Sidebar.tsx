@@ -122,17 +122,17 @@ export default function Sidebar() {
   return (
     <>
       {/* ─── Mobile Header Bar ───────────────────────────── */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 h-14 flex items-center gap-3 px-4 border-b border-[var(--color-border)] bg-[var(--color-bg-secondary)]/95 backdrop-blur-md">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 h-14 flex items-center gap-3 px-4 border-b border-[var(--color-border)] bg-[var(--color-bg-secondary)]/90 backdrop-blur-xl">
         <button
           onClick={() => setMobileOpen(true)}
-          className="p-2 -ml-1 rounded-lg hover:bg-[var(--color-bg-card)] text-[var(--color-text-secondary)] transition-colors"
+          className="p-2 -ml-1 rounded-lg hover:bg-white/5 text-[var(--color-text-secondary)] transition-colors"
           aria-label="Open navigation"
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
             <path d="M3 5h14M3 10h14M3 15h14" />
           </svg>
         </button>
-        <Link href="/" className="text-sm font-bold text-[var(--color-text-primary)]">
+        <Link href="/" className="text-sm font-[family-name:var(--font-display)] font-bold text-[var(--color-text-primary)]">
           Next.js Playground
         </Link>
       </div>
@@ -154,8 +154,8 @@ export default function Sidebar() {
           fixed md:sticky top-0 left-0 z-50 md:z-auto
           h-screen
           border-r border-[var(--color-border)]
-          bg-[var(--color-bg-secondary)]
-          transition-all duration-300 ease-in-out
+          bg-[var(--color-bg-secondary)]/80 backdrop-blur-xl
+          transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
           overflow-y-auto overflow-x-hidden
           flex-shrink-0 flex flex-col
           ${mobileOpen ? "translate-x-0 w-[280px]" : "-translate-x-full w-[280px]"}
@@ -167,7 +167,7 @@ export default function Sidebar() {
           {/* Mobile close button */}
           <button
             onClick={() => setMobileOpen(false)}
-            className="md:hidden p-1.5 rounded-lg hover:bg-[var(--color-bg-card)] text-[var(--color-text-secondary)] transition-colors"
+            className="md:hidden p-1.5 rounded-lg hover:bg-white/5 text-[var(--color-text-secondary)] transition-colors"
             aria-label="Close navigation"
           >
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
@@ -179,8 +179,11 @@ export default function Sidebar() {
           {!collapsed && (
             <Link
               href="/"
-              className="hidden md:block text-sm font-bold text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] transition-colors"
+              className="hidden md:flex items-center gap-2 text-sm font-[family-name:var(--font-display)] font-bold text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] transition-colors"
             >
+              <span className="w-5 h-5 rounded-md bg-gradient-to-br from-[var(--color-accent-blue)] to-[var(--color-accent-purple)] flex items-center justify-center text-[10px] font-bold text-white">
+                N
+              </span>
               Next.js Playground
             </Link>
           )}
@@ -188,7 +191,7 @@ export default function Sidebar() {
           {/* Desktop collapse toggle */}
           <button
             onClick={() => setCollapsed(!collapsed)}
-            className="hidden md:flex p-1.5 rounded-lg hover:bg-[var(--color-bg-card)] text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] transition-colors"
+            className="hidden md:flex p-1.5 rounded-lg hover:bg-white/5 text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] transition-colors"
             aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
           >
             <svg
@@ -209,7 +212,7 @@ export default function Sidebar() {
           {/* Mobile home link */}
           <Link
             href="/"
-            className="md:hidden text-sm font-bold text-[var(--color-text-primary)]"
+            className="md:hidden text-sm font-[family-name:var(--font-display)] font-bold text-[var(--color-text-primary)]"
           >
             Next.js Playground
           </Link>
@@ -223,7 +226,7 @@ export default function Sidebar() {
           {concepts.map((group) => (
             <div key={group.category} className="mb-5">
               {!collapsed && (
-                <h3 className="px-3 py-1.5 text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-[0.1em]">
+                <h3 className="px-3 py-1.5 text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-[0.12em]">
                   {group.category}
                 </h3>
               )}
@@ -237,8 +240,8 @@ export default function Sidebar() {
                       className={`
                         flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13px] transition-all duration-150
                         ${isActive
-                          ? "bg-[var(--color-accent-blue)]/12 text-[var(--color-accent-blue)] font-medium shadow-[inset_0_0_0_1px_rgba(59,130,246,0.15)]"
-                          : "text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-card)] hover:text-[var(--color-text-primary)]"
+                          ? "bg-[var(--color-accent-blue)]/10 text-[var(--color-accent-blue)] font-medium border border-[var(--color-accent-blue)]/15 shadow-sm shadow-[var(--color-accent-blue)]/5"
+                          : "text-[var(--color-text-secondary)] hover:bg-white/[0.04] hover:text-[var(--color-text-primary)] border border-transparent"
                         }
                       `}
                       title={item.name}

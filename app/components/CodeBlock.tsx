@@ -33,23 +33,31 @@ export default function CodeBlock({ code, language = "tsx", filename, highlights
 
   return (
     <div className="code-block my-4 relative group">
-      {/* File header */}
+      {/* File header with glass effect */}
       {filename && (
-        <div className="px-4 py-2.5 border-b border-[var(--color-border)] text-xs flex items-center justify-between bg-[#161b22]">
-          <span className="text-[var(--color-text-secondary)] font-medium truncate mr-4">{filename}</span>
-          <span className="text-[var(--color-text-muted)] flex-shrink-0">{language}</span>
+        <div className="px-4 py-2.5 border-b border-[var(--color-border)] text-xs flex items-center justify-between bg-[rgba(10,13,20,0.8)]">
+          <div className="flex items-center gap-2">
+            {/* Dot indicators */}
+            <div className="flex gap-1.5 mr-2">
+              <span className="w-2 h-2 rounded-full bg-[var(--color-text-muted)]/30" />
+              <span className="w-2 h-2 rounded-full bg-[var(--color-text-muted)]/30" />
+              <span className="w-2 h-2 rounded-full bg-[var(--color-text-muted)]/30" />
+            </div>
+            <span className="text-[var(--color-text-secondary)] font-medium truncate mr-4">{filename}</span>
+          </div>
+          <span className="text-[var(--color-text-muted)] flex-shrink-0 font-mono">{language}</span>
         </div>
       )}
 
-      {/* Copy button - requires onClick handler, hence Client Component */}
+      {/* Copy button */}
       <button
         onClick={handleCopy}
         className={`
-          absolute top-2 right-2 px-2.5 py-1 text-xs rounded-md
-          border border-[var(--color-border)] transition-all duration-150
+          copy-btn absolute top-2 right-2 px-2.5 py-1 text-xs rounded-md
+          border border-[var(--color-border)]
           ${copied
-            ? "bg-green-500/20 text-green-400 border-green-500/30"
-            : "bg-[var(--color-bg-card)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-hover)]"
+            ? "bg-[var(--color-accent-green)]/15 text-[var(--color-accent-green)] border-[var(--color-accent-green)]/25"
+            : "bg-[var(--color-bg-card-solid)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-hover)]"
           }
           opacity-0 group-hover:opacity-100 focus:opacity-100
           ${filename ? "top-12" : "top-2"}
@@ -66,11 +74,11 @@ export default function CodeBlock({ code, language = "tsx", filename, highlights
               key={i}
               className={`px-4 ${
                 highlights.includes(i + 1)
-                  ? "bg-[var(--color-accent-blue)]/8 border-l-2 border-[var(--color-accent-blue)]"
+                  ? "bg-[var(--color-accent-blue)]/6 border-l-2 border-[var(--color-accent-blue)]/50"
                   : "border-l-2 border-transparent"
               }`}
             >
-              <span className="inline-block w-8 text-[var(--color-text-muted)] select-none text-right mr-4 text-xs">
+              <span className="inline-block w-8 text-[var(--color-text-muted)]/60 select-none text-right mr-4 text-xs tabular-nums">
                 {i + 1}
               </span>
               {line}

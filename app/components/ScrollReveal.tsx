@@ -37,10 +37,10 @@ export default function ScrollReveal({
   }
 
   const directionOffset = {
-    up: { y: 24, x: 0 },
-    down: { y: -24, x: 0 },
-    left: { x: 24, y: 0 },
-    right: { x: -24, y: 0 },
+    up: { y: 20, x: 0 },
+    down: { y: -20, x: 0 },
+    left: { x: 20, y: 0 },
+    right: { x: -20, y: 0 },
     none: { x: 0, y: 0 },
   };
 
@@ -54,7 +54,7 @@ export default function ScrollReveal({
       transition={{
         duration,
         delay,
-        ease: [0.25, 0.1, 0.25, 1], // cubic-bezier for smooth deceleration
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
       }}
       className={className}
     >
